@@ -1,0 +1,69 @@
+1. Scenario: User deposits money into their account successfully
+     Given: A user has an existing account with some balance
+     And: The user initiates a deposit transaction with a valid account ID and amount greater than 0
+     When: The system processes the deposit transaction
+     Then: The system returns a success message and updated balance equal to the sum of the old balance and the deposited amount
+
+   Example response body:
+   ```json
+   {
+       "message": "Transaction processed successfully",
+       "account_id": "user1",
+       "new_balance": 2000
+   }
+   ```
+
+  2. Scenario: User attempts to deposit money with an insufficient balance
+   Given: A user has an account with insufficient funds for the requested deposit amount
+   And: The user initiates a deposit transaction with a valid account ID and amount greater than their current balance
+   When: The system processes the deposit transaction
+   Then: The system returns an error message "Insufficient funds" and does not update the balance
+
+   Example response body:
+   ```json
+   {
+       "error": "Insufficient funds"
+   }
+   ```
+
+  3. Scenario: User attempts to withdraw money from their account successfully
+   Given: A user has an existing account with sufficient funds
+   And: The user initiates a withdrawal transaction with a valid account ID and amount greater than 0 and less than or equal to their balance
+   When: The system processes the withdrawal transaction
+   Then: The system returns a success message and updated balance equal to the old balance minus the withdrawn amount
+
+   Example response body (old_balance=1500, withdrawn_amount=200):
+   ```json
+   {
+       "message": "Transaction processed successfully",
+       "account_id": "user1",
+       "new_balance": 1300
+   }
+   ```
+
+  4. Scenario: User attempts to withdraw more money than their available balance
+   Given: A user has an account with insufficient funds for the requested withdrawal amount
+   And: The user initiates a withdrawal transaction with a valid account ID and amount greater than their current balance
+   When: The system processes the withdrawal transaction
+   Then: The system returns an error message "Insufficient funds" and does not update the balance
+
+   Example response body:
+   ```json
+   {
+       "error": "Insufficient funds"
+   }
+   ```
+
+  5. Scenario: User views their account balance
+   Given: A user has an existing account with some balance
+   When: The user requests their account balance via the API
+   Then: The system returns a success message and the current account balance
+
+   Example response body (balance=1000):
+   ```json
+   {
+       "message": "Account Balance",
+       "account_id": "user1",
+       "balance": 1000
+   }
+   ```

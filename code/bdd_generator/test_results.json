@@ -1,0 +1,50 @@
+[
+    {
+        "scenario": "Deposit Scenario",
+        "request": {
+            "account_id": "user1",
+            "transaction_type": "deposit",
+            "amount": 300
+        },
+        "expected": {
+            "new_balance": 1300
+        },
+        "actual": {
+            "account_id": "user1",
+            "new_balance": 1300.0
+        },
+        "status": "\u2705 Passed"
+    },
+    {
+        "scenario": "Withdraw Scenario",
+        "request": {
+            "account_id": "user1",
+            "transaction_type": "withdraw",
+            "amount": 500
+        },
+        "expected": {
+            "new_balance": 800
+        },
+        "actual": {
+            "account_id": "user1",
+            "new_balance": 800.0
+        },
+        "status": "\u2705 Passed"
+    },
+    {
+        "scenario": "Mixed Scenario",
+        "request": {
+            "account_id": "user1",
+            "transaction_type": "deposit",
+            "amount": 200
+        },
+        "expected": {
+            "new_balance": 1020
+        },
+        "actual": {
+            "account_id": "user1",
+            "new_balance": 1000.0
+        },
+        "status": "\u274c Failed"
+    }
+]

@@ -1,0 +1,17 @@
+# Context File for BDD Scenario Generation & Testing
+
+## Application Overview
+This application is a financial transaction system that supports:
+- Deposits
+- Withdrawals
+- Balance checks
+
+## API Endpoint
+The system has a **POST /transaction** API:
+- **Request Example:**
+  ```json
+  {
+      "account_id": "user1",
+      "transaction_type": "deposit",
+      "amount": 500
+  }
